@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>文字信息无缝滚动</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style type="text/css">
+body {
+	font-size: 12px;
+	line-height: 24px;
+	text-align: center;      /* 页面内容居中 */
+}
+* {
+	margin: 0px;
+	padding: 0px;            /*  去掉所有标签的marign和padding的值  */
+}
+ul{
+	list-style: none;
+}
+a{
+	color: #333;
+	text-decoration: none;
+}
+a:hover{
+	color: #ff0000;
+}
+#moocBox{
+	margin: 0px auto;
+	height: 160px;
+	width: 200px;
+	border: 2px solid;
+	overflow: hidden;
+}
+
+</style>
+</head>
+<body>
+    <div id="moocBox">
+    <ul id="con1">
+    	<li><a href="#">1</a></li>
+    	<li><a href="#">12</a></li>
+    	<li><a href="#">123</a></li>
+    	<li><a href="#">1234</a></li>
+    	<li><a href="#">12345</a></li>
+    	<li><a href="#">123456</a></li>
+    	<li><a href="#">1234567</a></li>
+    	<li><a href="#">12345678</a></li>
+    	<li><a href="#">123456789</a></li>
+    </ul>
+    <ul id="con2">
+    </ul>
+    </div>
+<script type="text/javascript">
+ var area = document.getElementById('moocBox');
+ var con1 = document.getElementById('con1');
+ var con2 = document.getElementById('con2');
+ var speed = 50;
+ area.scrollTop = 0;
+ con2.innerHTML = con1.innerHTML;
+ function scrollUp(){
+	 if(area.scrollTop >= con1.scrollHeight) {
+		 area.scrollTop = 0;
+		 }else{
+		   area.scrollTop++; 
+		 } 
+}
+var myScroll = setInterval("scrollUp()",speed);
+area.onmouseover = function(){
+	 clearInterval(myScroll);
+	 console.log(123);
+	}
+area.onmouseout = function(){
+	 myScroll = setInterval("scrollUp()",speed);
+	}
+</script>
+</body>
+</html>
